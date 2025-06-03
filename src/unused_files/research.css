@@ -1,0 +1,397 @@
+/* Variáveis Globais */
+:root {
+    --primary-color: #9400D3;
+    --secondary-color: #8A2BE2;
+    --background-color: #121212;
+    --text-color: #FFFFFF;
+    --card-background: #1E1E1E;
+}
+
+/* Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tektur', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+
+
+/* Estilização da navegação */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--card-background);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.main-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    background-color: var(--primary-color);
+}
+
+/* Estilização da Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 3rem;
+    position: relative;
+    background: radial-gradient(circle at center, var(--primary-color) 0%, var(--background-color) 100%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, transparent, var(--background-color));
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, var(--background-color));
+    pointer-events: none;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    border-right: 3px solid var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: typing 3.5s steps(30, end), blinking 1s step-end infinite;
+}
+
+/* Animações */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 19ch; }
+}
+
+@keyframes blinking {
+    from, to { border-right-color: transparent; }
+    50% { border-right-color: var(--text-color); }
+}
+
+/* Seção de Destaques */
+.features {
+    padding: 4rem 2rem;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feature-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Estilo para o container do gráfico */
+.chart-container {
+    width: 80%; /* Ajuste a largura conforme necessário */
+    margin: 2rem auto;
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-background);
+    margin-top: 4rem;
+}
+
+.chart-container.box {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 2rem auto;
+    max-width: 800px;
+    text-align: center;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.chart-container.box:hover {
+    box-shadow: 0 0 20px rgba(194, 125, 235, 0.6);
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+    transition: background-color 0.3s;
+}
+
+.scroll-top:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0.5rem;
+}
+
+.menu-toggle:hover {
+    color: var(--primary-color);
+}
+
+.menu-toggle.active i::before {
+    content: "\f00d";
+}
+
+/* Responsive Design */
+@media (max-width: 950px) {
+    .main-nav {
+        padding: 1rem;
+    }
+    
+    .main-nav ul {
+        gap: 1rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    #nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-background);
+        flex-direction: column;
+        padding: 1rem 0;
+        z-index: 1000;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    #nav-menu.active {
+        display: flex;
+    }
+    
+    .main-nav {
+        justify-content: space-between;
+        position: relative;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+        animation: typing 3s steps(25, end), blinking 1s step-end infinite;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    .chart-container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        flex-direction: row;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .main-nav ul {
+        gap: 0;
+    }
+    
+    #nav-menu li {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 0;
+    }
+    
+    #nav-menu li a {
+        display: block;
+        width: 100%;
+    }
+    
+    #nav-menu li a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        animation: typing 2.5s steps(20, end), blinking 1s step-end infinite;
+        white-space: normal;
+        border-right: none;
+    }
+    
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .chart-container {
+        width: 100%;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+    }
+    
+    .features h2 {
+        font-size: 1.5rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .chart-container.box {
+        padding: 1rem;
+    }
+}
+
+/* Estilos para a tabela na página de pesquisa */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff; /* Cor de fundo da tabela */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 8px; /* Bordas arredondadas */
+}
+h1 {
+    text-align: center; /* Centraliza o texto do título */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Borda das células */
+    padding: 12px; /* Espaçamento interno */
+    text-align: left; /* Alinhamento do texto */
+}
+
+th {
+    background-color: #9400D3; /* Cor de fundo do cabeçalho */
+    color: white; /* Cor do texto do cabeçalho */
+    font-weight: bold; /* Negrito para o cabeçalho */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Cor de fundo para linhas pares */
+}
+
+tr:hover {
+    background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+
+td{
+    color: #8A2BE2;
+}
+/* Estilo para a tabela em dispositivos móveis */
+@media (max-width: 600px) {
+    th, td {
+        padding: 8px; /* Ajuste de espaçamento em telas menores */
+    }
+}

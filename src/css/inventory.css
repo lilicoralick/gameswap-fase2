@@ -1,0 +1,1147 @@
+/* Integração Bootstrap com estilo GameSwap */
+:root {
+    --bs-primary: #6c5ce7;
+    --bs-secondary: #a29bfe;
+    --bs-danger: #d63031;
+    --bs-dark: #1a1a2e;
+    --primary-color: #6c5ce7;
+    --secondary-color: #a29bfe;
+    --accent-color: #fd79a8;
+    --background-color: #0f0f1a;
+    --text-color: #ffffff;
+    --text-secondary: #b2b2b2;
+    --card-background: #1a1a2e;
+    --card-hover: #2a2a3e;
+    --border-color: #2a2a3e;
+    --success-color: #00b894;
+    --warning-color: #fdcb6e;
+    --danger-color: #d63031;
+}
+
+/* Garantindo que o header tenha a mesma altura das outras páginas */
+header .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(26, 26, 46, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    height: 78.07px; /* Altura ajustada para 78.07px */
+}
+.logo-image {
+    height: 90px;
+    scale: 1.75;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para o botão de menu toggle */
+header .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0.5rem;
+}
+
+header .menu-toggle:hover {
+    color: var(--primary-color);
+}
+
+header .menu-toggle.active i::before {
+    content: "\f00d";
+}
+
+/* Garantindo estilo consistente do menu de navegação */
+header #nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+header #nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header #nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+/* Estilo para o botão do carrinho */
+
+
+
+
+/* Media query para o menu responsivo */
+@media (max-width: 950px) {
+    header .menu-toggle {
+        display: block;
+    }
+    
+    header #nav-menu {
+        position: fixed;
+        flex-direction: column;
+        top: 78.07px; /* Ajustado para a nova altura do header */
+        left: 0;
+        width: 100%;
+        margin-left: 0;
+        background-color: rgba(26, 26, 46, 0.95);
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease;
+        padding: 0;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    header #nav-menu.active {
+        height: auto;
+        padding: 1rem 0;
+    }
+    
+    header #nav-menu li {
+        margin: 1rem 0;
+    }
+}
+
+/* Ajustes para manter o estilo original com Bootstrap */
+.card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(108, 92, 231, 0.2) !important;
+    box-shadow: 0 0 20px rgba(108, 92, 231, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 30px rgba(108, 92, 231, 0.2);
+}
+
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(108, 92, 231, 0.3) !important;
+    color: #fff !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #6c5ce7 !important;
+    box-shadow: 0 0 10px rgba(108, 92, 231, 0.3) !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-label {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Botões personalizados */
+.btn {
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: #6c5ce7 !important;
+    border-color: #6c5ce7 !important;
+}
+
+.btn-primary:hover {
+    background: #5d4dc7 !important;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.btn-outline-primary {
+    color: #6c5ce7 !important;
+    border-color: #6c5ce7 !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: rgba(108, 92, 231, 0.2) !important;
+    color: #fff !important;
+}
+
+.btn-outline-danger {
+    color: #d63031 !important;
+    border-color: #d63031 !important;
+}
+
+.btn-outline-danger:hover {
+    background-color: rgba(214, 48, 49, 0.2) !important;
+    color: #fff !important;
+}
+
+/* Mantendo elementos originais do inventário */
+html, body {
+    min-height: 100vh;
+    height: 100%;
+}
+
+body {
+    font-family: 'Tektur', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    position: relative;
+    overflow-x: hidden;
+}
+
+main.main {
+    flex: 1 0 auto; /* Faz o main crescer, mas não encolher */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+/* Container principal que envolve todo o conteúdo */
+.inventory-container {
+    flex-grow: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    margin-top: 0;
+    width: 100%;
+}
+
+/* Remover a duplicação da classe .security-info */
+.security-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.ssl-badge {
+    display: flex;
+    align-items: center;
+    background-color: rgba(15, 15, 30, 0.7);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    gap: 0.5rem;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ssl-badge i {
+    color: var(--success-color);
+    font-size: 1.2rem;
+}
+
+.security-details {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.security-details p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0;
+}
+
+.security-details i {
+    color: var(--primary-color);
+}
+
+/* Garantindo que o footer fique sempre na parte inferior */
+footer {
+    background-color: var(--card-background);
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+/* Removendo comportamento problemático em telas grandes */
+@media (min-height: 1080px) {
+    footer {
+        position: relative;
+        bottom: auto;
+    }
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+    .inventory-container {
+        margin-top: 0;
+        padding: 1rem;
+        padding-bottom: 2rem;
+    }
+    
+    .security-info {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .security-details {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .security-details p {
+        justify-content: center;
+        width: 100%;
+        min-width: auto;
+    }
+    
+    footer {
+        padding: 1.5rem 1rem;
+    }
+    
+    /* Garantir que elementos flutuantes não fiquem ocultos sob o footer */
+    .cart-modal {
+        z-index: 9999;
+    }
+    
+    /* Garantir que o conteúdo principal tenha espaço suficiente do footer */
+    .inventory-content {
+        margin-bottom: 3rem;
+    }
+    
+    /* Adicionar mais espaço aos últimos elementos */
+    .inventory-content > div:last-child,
+    #active-items, 
+    #sold-items {
+        margin-bottom: 2rem;
+    }
+}
+
+.inventory-header {
+    padding: 3rem 1rem 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.inventory-header h1 {
+    margin-bottom: 0.8rem;
+}
+
+.inventory-header p {
+    color: var(--text-color);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    .inventory-header p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Formulário de upload de imagem */
+.image-upload {
+    border: 2px dashed rgba(108, 92, 231, 0.3);
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.image-upload:hover {
+    border-color: #6c5ce7;
+    background: rgba(108, 92, 231, 0.1);
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a29bfe;
+    cursor: pointer;
+    padding: 1.5rem 0;
+}
+
+.upload-label i {
+    font-size: 2rem;
+}
+
+.image-preview {
+    margin-top: 1rem;
+    position: relative;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: block;
+}
+
+.remove-image {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.remove-image i {
+    font-size: 0.8rem;
+}
+
+/* Cartões de itens */
+.item-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.item-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(108, 92, 231, 0.1), rgba(108, 92, 231, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.item-card:hover::before {
+    opacity: 1;
+}
+
+.item-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(108, 92, 231, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.item-card:hover::after {
+    opacity: 1;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(108, 92, 231, 0.2);
+}
+
+.item-image {
+    height: 200px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 576px) {
+    .item-image {
+        height: 180px;
+    }
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.item-card:hover .item-image img {
+    transform: scale(1.05);
+}
+
+.item-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 2;
+}
+
+.item-price {
+    font-weight: bold !important;
+    font-size: 0.9rem !important;
+}
+
+.item-info {
+    position: relative;
+    z-index: 2;
+}
+
+.item-info h5 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-info p {
+    font-size: 0.9rem;
+    color: #a29bfe;
+    margin-bottom: 0.5rem;
+}
+
+.item-quality {
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Estado vazio */
+.empty-state {
+    padding: 3rem 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 2rem 0;
+    flex-grow: 1;
+}
+
+.empty-state h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: #a29bfe;
+}
+
+/* Estatísticas de vendas */
+.sold-items {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(108, 92, 231, 0.2);
+    transition: all 0.3s ease;
+}
+
+.stat:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6c5ce7;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #a29bfe;
+}
+
+/* Toast de notificação */
+.toast {
+    background-color: #6c5ce7 !important;
+    border-color: #5d4dc7 !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .row.inventory-content {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .sold-stats {
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .stat {
+        flex: 1;
+        padding: 0.75rem;
+    }
+    
+    .stat-value {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .stat {
+        padding: 0.5rem;
+    }
+    
+    .stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .item-info h5 {
+        font-size: 1rem;
+    }
+    
+    .item-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-sm {
+        width: 100%;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Estilo para itens vendidos */
+.sold-item {
+    position: relative;
+    opacity: 0.8;
+}
+
+.sold-item::after {
+    content: 'Vendido';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #00b894;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 3;
+}
+
+.sold-item .item-actions {
+    display: none;
+}
+
+.sold-item .item-info {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.sold-item .item-price {
+    color: #00b894;
+}
+
+/* Estilos do Modal do Carrinho */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+
+.cart-content {
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.cart-button{
+    position: relative;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+.cart-button:hover {
+    color: #6c5ce7;
+}
+.cart-count {
+    position: absolute;
+    top: 0px;
+    right: -5px;
+    background: #6c5ce7;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 25px;
+    max-height: 19px;
+    min-width: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+    
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-header h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 0;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-cart:hover {
+    color: #6c5ce7;
+}
+
+.cart-items {
+    margin-bottom: 2rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+}
+
+.cart-item-info p {
+    font-size: 0.9rem;
+    color: #a29bfe;
+    margin: 0 0 0.5rem 0;
+}
+
+.cart-item-price {
+    font-size: 1rem;
+    color: #6c5ce7;
+    font-weight: 600;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff4757;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.remove-item:hover {
+    transform: scale(1.2);
+}
+
+.cart-summary {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.cart-total span:first-child {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.total-price {
+    font-size: 1.5rem;
+    color: #6c5ce7;
+    font-weight: 600;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-checkout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+}
+
+/* Estilo para a etiqueta de preço */
+.item-price.badge {
+    background-color: #6c5ce7 !important; /* Cor primária do site */
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+}
+
+/* Estilo para a etiqueta de qualidade */
+.item-quality.badge {
+    background-color: #2d3436 !important; /* Cor escura customizada */
+    color: #a29bfe; /* Cor secundária do site */
+    font-weight: 500;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    border: 1px solid rgba(162, 155, 254, 0.3);
+}
+
+/* Estilo para o título do formulário */
+.inventory-form .card-title {
+    color: #fff !important;
+}
+
+/* Responsividade do Carrinho */
+@media (max-width: 768px) {
+    .cart-modal {
+        width: 100%;
+    }
+    
+    .cart-content {
+        width: 100%;
+    }
+    
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cart-item img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Estilos para o título animado, similar ao marketplace */
+.animated-title {
+    white-space: normal;
+    border-right: none;
+    padding-right: 0;
+    -webkit-text-stroke: 2px white;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    color: transparent;
+    margin-top: 2rem;
+}
+
+.animated-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* animation: glitchEffect 5s linear infinite; */
+    -webkit-text-stroke: 0;
+}
+
+@keyframes glitchEffect {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    2% {
+        clip-path: polygon(10% 10%, 100% 10%, 100% 20%, 10% 20%);
+    }
+    4% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    }
+    6% {
+        clip-path: polygon(0 40%, 100% 40%, 100% 55%, 0 55%);
+    }
+    8% {
+        clip-path: polygon(0 70%, 100% 70%, 100% 85%, 0 85%);
+    }
+    10% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 100%, 0 100%);
+    }
+    12% {
+        clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%);
+    }
+    14% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    16% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 80%, 0 80%);
+    }
+    18% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+    }
+    20% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    87% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    90% {
+        clip-path: polygon(30% 10%, 70% 10%, 70% 20%, 30% 20%);
+    }
+    93% {
+        clip-path: polygon(30% 60%, 70% 60%, 70% 70%, 30% 70%);
+    }
+    97% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+/* Media queries para responsividade do título */
+@media (max-width: 768px) {
+    .animated-title {
+        font-size: 3rem;
+        -webkit-text-stroke: 1.5px white;
+    }
+}
+
+@media (max-width: 480px) {
+    .animated-title {
+        font-size: 3rem;
+        -webkit-text-stroke: 2px white;
+    }
+
+    .ssl-badge {
+        padding: 0.6rem 1rem;
+    }
+    
+    .security-details {
+        gap: 1rem;
+        flex-direction: column;
+        max-width: 100%;
+    }
+    
+    .security-details p {
+        min-width: auto;
+        width: 100%;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 412px) {
+    .animated-title {
+        font-size: 2.5rem;
+        -webkit-text-stroke: 2px white;
+    }
+}
+
+/* Classes utilitárias */
+.min-vh-50 {
+    min-height: 50vh !important;
+}
+
+@media (max-height: 800px) {
+    .min-vh-50 {
+        min-height: 30vh !important;
+    }
+}
+
+/* Espaçador para evitar sobreposição em dispositivos móveis */
+.footer-spacer {
+    height: 60px;
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+    .footer-spacer {
+        height: 100px;
+    }
+}
+
+/* Ajustes específicos para o footer */
+.copyright {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Ajustando espaçamento para garantir visibilidade do conteúdo */
+.inventory-content {
+    margin-bottom: 2rem;
+}
+
+.sold-items {
+    margin-bottom: 3rem; /* Garantir espaço para o footer em telas pequenas */
+}
+
+/* Ajustes especiais para mobile */
+@media (max-width: 576px) {
+    body {
+        padding-bottom: 0; /* Remover qualquer padding adicional no body */
+    }
+    
+    .inventory-container {
+        padding-bottom: 5rem; /* Aumentar o espaço no final do container */
+    }
+    
+    footer {
+        position: relative;
+        bottom: auto;
+        margin-top: 2rem !important;
+    }
+    
+    .inventory-content {
+        margin-bottom: 3rem;
+    }
+    
+    .sold-items {
+        margin-bottom: 4rem;
+    }
+    
+    /* Garantir que o botão checkout do carrinho esteja visível */
+    .btn-checkout {
+        margin-bottom: 1rem;
+    }
+    
+    /* Garantir visibilidade do formulário em dispositivos pequenos */
+    .inventory-form {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Evitar bugs no iOS Safari que podem afetar o layout fixo */
+@supports (-webkit-touch-callout: none) {
+    body {
+        /* Evitar problemas com 100vh no iOS */
+        height: -webkit-fill-available;
+    }
+    
+    html {
+        height: -webkit-fill-available;
+    }
+}
+
+.card-body {
+    color: var(--text-color) !important;
+}
+
+.card-body .card-title,
+.card-body .card-text,
+.card-body p {
+    color: var(--text-color) !important;
+}
+
+.item-card .card-body {
+    color: var(--text-color) !important;
+}
+
+.item-card .card-body h5,
+.item-card .card-body p {
+    color: var(--text-color) !important;
+} 
